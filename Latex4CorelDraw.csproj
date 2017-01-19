@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7325577F-8891-476D-AA82-A9C82D5C708C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Latex4CorelDraw</RootNamespace>
+    <AssemblyName>Latex4CorelDraw</AssemblyName>
+    <!--<TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>-->
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <OutDir>bin\Debug\$(SolutionName)</OutDir>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <OutDir>bin\Release\$(SolutionName)</OutDir>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ScintillaNET">
+      <HintPath>..\Scintilla\2.6\bin\Release\ScintillaNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="c:\program files\corel\coreldraw graphics suite x8\programs64\Assemblies\Corel.Interop.VGCore.dll">
+      <Name>Corel.Interop.VGCore</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddinUtilities.cs" />
+    <Compile Include="ErrorDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorDialog.Designer.cs">
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LatexDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LatexDialog.designer.cs">
+      <DependentUpon>LatexDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsManager.cs" />
+    <Compile Include="ShapeTags.cs" />
+    <Page Include="DockerUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="DockerUI.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!--<ItemGroup>
+    <Compile Include="DockerUI.xaml" />
+    <Compile Include="DockerUI.xaml.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>-->
+  <ItemGroup>
+    <Compile Include="LatexFileGenerator.cs" />
+    <Compile Include="OptionsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionsDialog.Designer.cs">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="ErrorDialog.resx">
+      <DependentUpon>ErrorDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LatexDialog.resx">
+      <DependentUpon>LatexDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsDialog.resx">
+      <DependentUpon>OptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppUI.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Language.xml" />
+    <None Include="Resources\LatexInlineTemplate.txt" />
+    <None Include="Resources\LatexTemplate.txt" />
+    <Content Include="UserUI.xslt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CorelDrw.addon">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>
+      if not exist "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" md "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)"
+      copy "$(TargetPath)" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)CorelDrw.addon" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)AppUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)UserUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      if $(ConfigurationName) == Debug copy "$(TargetDir)\$(SolutionName).pdb" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)\$(SolutionName).pdb"
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartAction>Program</StartAction>
+    <StartProgram>c:\program files\corel\coreldraw graphics suite x8\programs64\CorelDRW.exe</StartProgram>
+  </PropertyGroup>
+</Project>

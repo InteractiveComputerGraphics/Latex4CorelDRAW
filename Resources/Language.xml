@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ScintillaNET>
+	<Language Name="default">
+	<Styles>
+		<Style Name="Default" FontName="Consolas" />
+	</Styles>
+	</Language>
+	<Language Name="mytex">
+		<Indentation TabWidth="3" UseSpaces="True" SmartIndentType="cpp"/>
+		<AutoComplete FillUpCharacters="" SingleLineAccept="True" IsCaseSensitive="False">
+			<List>align begin end eqnarray equation hline hspace left matrix newline partial right table tabular vspace</List>
+		</AutoComplete>
+		<Lexer LexerName="tex" LineCommentPrefix="%">
+			<Keywords List="3" Inherit="False">
+				align begin end eqnarray equation hline hspace left matrix newline partial right table tabular vspace
+			</Keywords>
+		</Lexer>
+		<Styles>	
+			<Style Name="DOCUMENT_DEFAULT" FontName="Consolas" Size="10" ForeColor="DarkGray" Italic="Yes"/>
+			<Style Name="GROUP" ForeColor="0x3399CC" Bold="Yes"/>
+			<Style Name="TEXT" ForeColor="Black"/>			
+			<Style Name="COMMAND" ForeColor="0x333399" Bold="Yes"/>
+			<Style Name="SPECIAL" ForeColor="0x3399CC" Bold="Yes"/>
+			<Style Name="SYMBOL" ForeColor="Green" Bold="Yes"/>
+			<Style Name="BRACEBAD" ForeColor="0x990000" BackColor="LightGray" Bold="Yes"/>
+			<Style Name="BRACELIGHT" ForeColor="0x00BB00" BackColor="LightGray" Bold="Yes"/>
+		</Styles>
+		<Snippets>
+
+<Snippet Shortcut="equation" IsSurroundsWith="True">\begin{equation$*$}
+	$selected$$end$
+\end{equation$*$}$DropMarker$</Snippet>
+<Snippet Shortcut="eqnarray" IsSurroundsWith="True">\begin{eqnarray$*$}
+	$selected$$end$
+\end{eqnarray$*$}$DropMarker$</Snippet>
+<Snippet Shortcut="align" IsSurroundsWith="True">\begin{align$*$}
+	$selected$$end$
+\end{align$*$}$DropMarker$</Snippet>
+<Snippet Shortcut="matrix" IsSurroundsWith="True">\left ( \begin{matrix}
+	$selected$$end$
+\end{matrix} \right )$DropMarker$</Snippet>
+<Snippet Shortcut="cases" IsSurroundsWith="True">\begin{cases}
+	$selected$$end$
+\end{cases}$DropMarker$</Snippet>
+<Snippet Shortcut="frac" IsSurroundsWith="False">\frac{$numerator$}{$denominator$}$end$$DropMarker$</Snippet>
+<Snippet Shortcut="brackets" IsSurroundsWith="True">\left (	$selected$$end$ \right ) $DropMarker$</Snippet>
+<Snippet Shortcut="mag" IsSurroundsWith="True">| $selected$$end$ | $DropMarker$</Snippet>
+<Snippet Shortcut="norm" IsSurroundsWith="True">\left |	$selected$$end$ \right | $DropMarker$</Snippet>
+<Snippet Shortcut="tabular" IsSurroundsWith="True">\begin{tabular}{$c$}
+	$selected$$end$
+\end{tabular}$DropMarker$</Snippet>
+
+	</Snippets>
+	</Language>
+</ScintillaNET>
