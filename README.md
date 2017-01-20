@@ -16,4 +16,4 @@ Download latest release and extract the zip file into the folder C:\Program File
 
 ## Screenshots
 
-<img src="screenshots/screenshot1.jpg" width="639">
+<img src="screenshots/screenshot1.jpg" width="320">
