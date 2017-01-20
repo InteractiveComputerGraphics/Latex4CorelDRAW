@@ -46,7 +46,8 @@ namespace Latex4CorelDraw
 
         private void btn_addEquation_Click(object sender, RoutedEventArgs e)
         {
-            createLatexObject(null, "Create latex object");
+            string template = "\\begin{equation*}\r\n\t<Enter latex code>\r\n\\end{equation*}\r\n";
+            createLatexObject(template, "Create latex equation");
         }
 
         public void createLatexObject(string template, string title)
@@ -65,10 +66,7 @@ namespace Latex4CorelDraw
             {
                 m_dialog.init(eq, "Edit latex object");
 
-                // We cannot use the usual dialog result, since it is not correct, when hiding the window
-                //IntPtr hwnd = GetForegroundWindow();
                 m_dialog.ShowDialog();
-                //SetForegroundWindow(hwnd);
                 if (m_dialog.Result == System.Windows.Forms.DialogResult.OK)
                 {
                     Corel.Interop.VGCore.Shape latexObj = m_dialog.LatexEquation.m_shape;
@@ -83,9 +81,10 @@ namespace Latex4CorelDraw
             return false;
         }
 
-        private void btn_editEquation_Click(object sender, RoutedEventArgs e)
+        private void btn_editLatex_Click(object sender, RoutedEventArgs e)
         {
-            Corel.Interop.VGCore.Shapes sel = corelApp.ActiveLayer.SelectableShapes;
+            Corel.Interop.VGCore.ShapeRange sel = corelApp.ActiveDocument.SelectionRange;
+            //Corel.Interop.VGCore.Shapes sel = corelApp.ActiveLayer.SelectableShapes;
             bool found = false;
             foreach (Corel.Interop.VGCore.Shape s in sel)
             {
@@ -94,6 +93,17 @@ namespace Latex4CorelDraw
             }
             if (!found)
                 createLatexObject(null, "Create latex object");
+        }
+
+        private void btn_addLatex_Click(object sender, RoutedEventArgs e)
+        {
+            createLatexObject(null, "Create latex object");
+        }
+
+        private void btn_addEqnarray_Click(object sender, RoutedEventArgs e)
+        {
+            string template = "\\begin{eqnarray*}\r\n\t<Enter latex code>\r\n\\end{eqnarray*}\r\n";
+            createLatexObject(template, "Create latex equation array");
         }
     }
 }

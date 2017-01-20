@@ -18,7 +18,6 @@ namespace Latex4CorelDraw
         public int m_textShapeId;
         public int m_imageWidth;
         public int m_imageHeight;
-        public int m_offset;
         public Corel.Interop.VGCore.Shape m_shape;
 
         public LatexEquation(string latexCode, float fontSize, string textColor, LatexFont font, LatexFontSeries fontSeries, LatexFontShape fontShape)
@@ -31,7 +30,6 @@ namespace Latex4CorelDraw
             m_fontShape = fontShape;
             m_imageWidth = 0;
             m_imageHeight = 0;
-            m_offset = 0;
             m_textShapeId = -1;
         }
 
@@ -45,7 +43,6 @@ namespace Latex4CorelDraw
             m_fontShape = fontShape;
             m_imageWidth = 0;
             m_imageHeight = 0;
-            m_offset = 0;
             m_textShapeId = textShapeId;
         }
     }
@@ -92,7 +89,9 @@ namespace Latex4CorelDraw
             content += "\\color{txtcolor}\n";
             content += "\\changefont{" + equation.m_font.latexFontName + "}{" +
                                          equation.m_fontSeries.latexFontSeries + "}{" +
-                                         equation.m_fontShape.latexFontShape + "}\n";
+                                         equation.m_fontShape.latexFontShape + "}{" +
+                                         equation.m_fontSize.ToString() + "}{" +
+                                         ((equation.m_fontSize*1.2)).ToString(System.Globalization.CultureInfo.InvariantCulture) + "}\n";
             content += equation.m_code;
             if (usePreview)
                 content += "\n\\end{preview}\n";

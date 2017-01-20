@@ -229,6 +229,7 @@ namespace Latex4CorelDraw
                                                       (LatexFontShape)comboBoxShape.SelectedItem);
 
             // Run once with preview to get depth value
+            m_finishedSuccessfully = true;
             if (!createShape)
                 m_finishedSuccessfully = AddinUtilities.createLatexPng(m_latexEquation, true, true);            
 
@@ -236,18 +237,21 @@ namespace Latex4CorelDraw
             {
                 // Run once without to get correct tight image
                 if (!createShape)
-                    AddinUtilities.createLatexPng(m_latexEquation, false, false);
+                    m_finishedSuccessfully = AddinUtilities.createLatexPng(m_latexEquation, false, false);
                 else
                 {
-                    AddinUtilities.createLatexPs(m_latexEquation);
+                    m_finishedSuccessfully = AddinUtilities.createLatexPs(m_latexEquation);
 
-                    string imageFile = Path.Combine(AddinUtilities.getAppDataLocation(), "teximport.ps");
-                    Corel.Interop.VGCore.StructImportOptions impopt = new Corel.Interop.VGCore.StructImportOptions();
-                    impopt.MaintainLayers = true;
-                    Corel.Interop.VGCore.ImportFilter impflt = DockerUI.Current.CorelApp.ActiveLayer.ImportEx(imageFile, Corel.Interop.VGCore.cdrFilter.cdrPSInterpreted, impopt);
-                    impflt.Finish();
-                    m_latexEquation.m_shape = DockerUI.Current.CorelApp.ActiveShape;
-                    ShapeTags.setShapeTags(m_latexEquation);
+                    if (m_finishedSuccessfully)
+                    {
+                        string imageFile = Path.Combine(AddinUtilities.getAppDataLocation(), "teximport.ps");
+                        Corel.Interop.VGCore.StructImportOptions impopt = new Corel.Interop.VGCore.StructImportOptions();
+                        impopt.MaintainLayers = true;
+                        Corel.Interop.VGCore.ImportFilter impflt = DockerUI.Current.CorelApp.ActiveLayer.ImportEx(imageFile, Corel.Interop.VGCore.cdrFilter.cdrPSInterpreted, impopt);
+                        impflt.Finish();
+                        m_latexEquation.m_shape = DockerUI.Current.CorelApp.ActiveShape;
+                        ShapeTags.setShapeTags(m_latexEquation);
+                    }
                 }
             }
             return m_finishedSuccessfully;
@@ -345,44 +349,6 @@ namespace Latex4CorelDraw
             System.Diagnostics.Process.Start(templateFileName);
         }
  
- /*       private bool m_textChanged = false;
-
-        private void textBoxLatex_TextChanged(object sender, EventArgs e)
-        {
-            List<string> list = new List<string>();
-            list.Add("\\begin");
-            list.Add("\\end");            
-            if (!m_textChanged)
-            {
-                // Get text until caret
-                int oldSelStart = textBoxLatex.SelectionStart;
-                string str = textBoxLatex.Text.Substring(0, textBoxLatex.SelectionStart);
-                if (str.Length > 0)
-                {
-                    int index = str.LastIndexOf(" ") + 1;
-                    str = str.Substring(index);
-                    
-                    foreach (string entry in list)
-                    {
-                        if (entry.IndexOf(str) == 0)
-                        {
-                            m_textChanged = true;
-                            textBoxLatex.SelectionStart = index;
-                            textBoxLatex.SelectionLength = str.Length;
-                            textBoxLatex.SelectedText = entry;
-                            textBoxLatex.SelectionStart = oldSelStart;
-                            textBoxLatex.SelectionLength = entry.Length - oldSelStart;
-                            break;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                m_textChanged = false;
-            }
-        }*/
-
     }
 
     public class LatexFont

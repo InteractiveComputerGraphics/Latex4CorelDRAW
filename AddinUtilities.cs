@@ -39,18 +39,18 @@ namespace Latex4CorelDraw
             if (m_latexFonts == null)
             {
                 m_latexFonts = new List<LatexFont>();
-                m_latexFonts.Add(new LatexFont("Computer Modern Roman", "cmr"));
+                //m_latexFonts.Add(new LatexFont("Computer Modern Roman", "cmr"));
                 m_latexFonts.Add(new LatexFont("Times Roman", "ptm"));
                 m_latexFonts.Add(new LatexFont("Palatino", "ppl"));
-                m_latexFonts.Add(new LatexFont("NewCenturySchoolBook", "pnc"));
+                m_latexFonts.Add(new LatexFont("New Century Schoolbook", "pnc"));
                 m_latexFonts.Add(new LatexFont("Bookman", "pbk"));
-                m_latexFonts.Add(new LatexFont("Computer Modern SansSerif", "cmss"));
+                //m_latexFonts.Add(new LatexFont("Computer Modern SansSerif", "cmss"));
                 m_latexFonts.Add(new LatexFont("Helvetica", "phv"));
-                m_latexFonts.Add(new LatexFont("AvantGarde", "pag"));
-                m_latexFonts.Add(new LatexFont("Computer Modern Typewriter", "cmtt"));
+                m_latexFonts.Add(new LatexFont("Avant Garde", "pag"));
+                //m_latexFonts.Add(new LatexFont("Computer Modern Typewriter", "cmtt"));
                 m_latexFonts.Add(new LatexFont("Courier", "pcr"));
-                m_latexFonts.Add(new LatexFont("Computer Modern Fibonacci", "cmfib"));
-                m_latexFonts.Add(new LatexFont("Computer Modern Dunhill", "cmdh"));
+                //m_latexFonts.Add(new LatexFont("Computer Modern Fibonacci", "cmfib"));
+                //m_latexFonts.Add(new LatexFont("Computer Modern Dunhill", "cmdh"));
             }
             if (m_latexFontSeries == null)
             {
@@ -289,7 +289,7 @@ namespace Latex4CorelDraw
             return true;
         }
 
-        public static bool executeDviPng(LatexEquation equation, bool usePreview, bool firstRun)
+        public static bool executeDviPng(LatexEquation equation, bool firstRun)
         {
             string appPath = AddinUtilities.getAppDataLocation();
             Directory.SetCurrentDirectory(appPath);
@@ -325,73 +325,6 @@ namespace Latex4CorelDraw
                     if (!startProcess("cmd.exe", "/c \"" + mgr.SettingsData.miktexPath + "\\dvipng.exe\" -T tight -bg Transparent --depth --noghostscript -D " + dpiValue.ToString() + " -o teximport.png teximport.dvi", true, true, out output))
                         return false;
             }
-
-            if (usePreview)
-            {
-                try
-                {
-                    System.Text.RegularExpressions.Match match = System.Text.RegularExpressions.Regex.Match(output, @"depth=(\S*)]");
-                    string depthStr = match.Groups[1].Value;
-                    equation.m_offset = Int32.Parse(depthStr);
-                }
-                catch
-                {
-                    equation.m_offset = 0;
-                }
-            }
-            return true;
-        }
-
-        public static bool executeDviPng(List<LatexEquation> equations)
-        {
-            string appPath = AddinUtilities.getAppDataLocation();
-            Directory.SetCurrentDirectory(appPath);
-
-            // Check Dpi
-            float[] systemDPI = AddinUtilities.getSystemDPI();
-
-            float dpiValue = 192; 
-            foreach (LatexEquation equation in equations)
-            {
-                float factor = equation.m_fontSize / 12.0f;
-                float dpi = factor * systemDPI[0];   // Multiply chosen dpi with factor
-                if (dpi > dpiValue)
-                    dpiValue = dpi;
-            }
-
-            SettingsManager mgr = SettingsManager.getCurrent();
-            try
-            {
-                File.Delete(appPath + "\\teximport.png");
-            }
-            catch
-            {
-                MessageBox.Show("teximport.png could not be written. Permission denied.");
-                return false;
-            }
-
-            string output = "";
-            if (!startProcess("cmd.exe", "/c \"" + mgr.SettingsData.miktexPath + "\\dvipng.exe\" -T tight -bg Transparent --depth --noghostscript -D " + dpiValue.ToString() + " -o teximport%d.png teximport.dvi", true, false, out output))
-                if (!startProcess("cmd.exe", "/c \"" + mgr.SettingsData.miktexPath + "\\dvipng.exe\" -T tight -bg Transparent --depth --noghostscript -D " + dpiValue.ToString() + " -o teximport%d.png teximport.dvi", true, true, out output))
-                    return false;
-
-            try
-            {
-                System.Text.RegularExpressions.MatchCollection matches = System.Text.RegularExpressions.Regex.Matches(output, @"depth=(\S*)\]");
-                if (matches.Count == equations.Count)
-                {
-                    LatexEquation [] eq = equations.ToArray();
-                    for (int i = 0; i < equations.Count; i++)
-                    {
-                        string depthStr = matches[i].Groups[1].Value;
-                        eq[i].m_offset = Int32.Parse(depthStr);
-                    }
-                }
-            }
-            catch
-            {
-                //equation.m_offset = 0;
-            }
             return true;
         }
 
@@ -415,10 +348,7 @@ namespace Latex4CorelDraw
             string output = "";
 
             // run dvips
-            if (!startProcess("cmd.exe", "/c \"" + mgr.SettingsData.miktexPath + "\\dvips.exe\" teximport.dvi", true, false, out output))
-                return false;
-
-            equation.m_offset = 0;
+            startProcess("cmd.exe", "/c \"" + mgr.SettingsData.miktexPath + "\\dvips.exe\" teximport.dvi", true, false, out output);
   
             return true;
         }
@@ -433,7 +363,7 @@ namespace Latex4CorelDraw
             LatexFileGenerator.writeTexFile(appPath + "\\teximport.tex", equation, usePreview);
             if (!executeMikTex())
                 return false;
-            if (!executeDviPng(equation, usePreview, firstRun))
+            if (!executeDviPng(equation, firstRun))
                 return false;
 
             return true;

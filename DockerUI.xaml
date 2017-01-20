@@ -9,8 +9,10 @@
     <Grid Margin="0,0,0,0">
         <StackPanel>
             <Label Content="Latex" />
-            <Button Content="Add equation" Margin="2,0,0,0" Name="btn_addEquation" Click="btn_addEquation_Click"/>
-            <Button Content="Edit equation" Margin="2,0,0,0" Name="btn_editEquation" Click="btn_editEquation_Click"/>
+            <Button Content="Add latex" Margin="2,2,2,2" Name="btn_addLatex" Click="btn_addLatex_Click"/>
+            <Button Content="Edit latex" Margin="2,2,2,2" Name="btn_editLatex" Click="btn_editLatex_Click"/>
+            <Button Content="Add equation" Margin="2,2,2,2" Name="btn_addEquation" Click="btn_addEquation_Click"/>
+            <Button Content="Add eqnarray" Margin="2,2,2,2" Name="btn_addEqnarray" Click="btn_addEqnarray_Click"/>
         </StackPanel>
     </Grid>
 

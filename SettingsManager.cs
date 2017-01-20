@@ -70,7 +70,7 @@ namespace Latex4CorelDraw
                 m_settings = new Settings();
                 m_settings.textColor = "0,0,0";
                 m_settings.fontSize = "12";
-                m_settings.font = "Computer Modern Roman";
+                m_settings.font = "Times Roman";
                 m_settings.fontSeries = "Standard";
                 m_settings.fontShape = "Standard";
                 m_settings.insertAtCursor = true;
