@@ -154,8 +154,12 @@
       copy "$(ProjectDir)CorelDrw.addon" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
       copy "$(ProjectDir)AppUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
       copy "$(ProjectDir)UserUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\SciLexer.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\SciLexer64.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.xml" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
       if $(ConfigurationName) == Debug copy "$(TargetDir)\$(SolutionName).pdb" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)\$(SolutionName).pdb"
-    </PostBuildEvent>
+</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <StartAction>Program</StartAction>
