@@ -89,25 +89,6 @@ namespace Latex4CorelDraw
                     }
                 }
             }
-
-//             // If the GS path was not found, try to find it in the registry
-//             if ((m_settings.gsPath == null) || (m_settings.gsPath == ""))
-//             {
-//                 RegistryKey key = Registry.LocalMachine.OpenSubKey("Software\\GPL Ghostscript", false);
-//                 if (key != null)
-//                 {
-//                     string [] versionKeys = key.GetSubKeyNames();
-//                     if (versionKeys.Length > 0)
-//                     {
-//                         // Just take the first version 
-//                         key = Registry.LocalMachine.OpenSubKey("Software\\GPL Ghostscript\\" + versionKeys[0], false);
-//                         if (key != null)
-//                         {
-//                             m_settings.gsPath = Path.GetDirectoryName((string)key.GetValue("GS_DLL", ""));
-//                         }
-//                     }
-//                 }
-//             }
             return result;
         }
     }
@@ -117,7 +98,6 @@ namespace Latex4CorelDraw
         public string textColor; 
         public string fontSize;
         public string miktexPath;
-        //public string gsPath;
         public string font;
         public string fontSeries;
         public string fontShape;

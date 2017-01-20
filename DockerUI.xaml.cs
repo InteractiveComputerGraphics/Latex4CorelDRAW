@@ -84,7 +84,6 @@ namespace Latex4CorelDraw
         private void btn_editLatex_Click(object sender, RoutedEventArgs e)
         {
             Corel.Interop.VGCore.ShapeRange sel = corelApp.ActiveDocument.SelectionRange;
-            //Corel.Interop.VGCore.Shapes sel = corelApp.ActiveLayer.SelectableShapes;
             bool found = false;
             foreach (Corel.Interop.VGCore.Shape s in sel)
             {

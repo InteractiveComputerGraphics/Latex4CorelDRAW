@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="ScintillaNET, Version=2.6.0.0, Culture=neutral, PublicKeyToken=948d6c9751444115, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Scintilla\3.5.10\ScintillaNET.dll</HintPath>
+      <HintPath>..\Scintilla\2.6\bin\Release\ScintillaNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -133,6 +133,7 @@
     <None Include="Resources\LatexTemplate.txt" />
     <Content Include="UserUI.xslt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="CorelDrw.addon">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

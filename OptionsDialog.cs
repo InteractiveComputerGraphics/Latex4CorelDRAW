@@ -17,12 +17,6 @@ namespace Latex4CorelDraw
             set { textBoxMiktex.Text = value; }
         }
 
-//         public string GSPath
-//         {
-//             get { return textBoxGS.Text; }
-//             set { textBoxGS.Text = value; }
-//         }
-
         public OptionsDialog()
         {
             InitializeComponent();

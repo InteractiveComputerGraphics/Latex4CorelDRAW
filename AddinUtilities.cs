@@ -39,18 +39,13 @@ namespace Latex4CorelDraw
             if (m_latexFonts == null)
             {
                 m_latexFonts = new List<LatexFont>();
-                //m_latexFonts.Add(new LatexFont("Computer Modern Roman", "cmr"));
                 m_latexFonts.Add(new LatexFont("Times Roman", "ptm"));
                 m_latexFonts.Add(new LatexFont("Palatino", "ppl"));
                 m_latexFonts.Add(new LatexFont("New Century Schoolbook", "pnc"));
                 m_latexFonts.Add(new LatexFont("Bookman", "pbk"));
-                //m_latexFonts.Add(new LatexFont("Computer Modern SansSerif", "cmss"));
                 m_latexFonts.Add(new LatexFont("Helvetica", "phv"));
                 m_latexFonts.Add(new LatexFont("Avant Garde", "pag"));
-                //m_latexFonts.Add(new LatexFont("Computer Modern Typewriter", "cmtt"));
                 m_latexFonts.Add(new LatexFont("Courier", "pcr"));
-                //m_latexFonts.Add(new LatexFont("Computer Modern Fibonacci", "cmfib"));
-                //m_latexFonts.Add(new LatexFont("Computer Modern Dunhill", "cmdh"));
             }
             if (m_latexFontSeries == null)
             {
@@ -454,11 +449,9 @@ namespace Latex4CorelDraw
             SettingsManager mgr = SettingsManager.getCurrent();
             OptionsDialog dialog = new OptionsDialog();
             dialog.MiktexPath = mgr.SettingsData.miktexPath;
-            //dialog.GSPath = mgr.SettingsData.gsPath;
             if (dialog.ShowDialog() == DialogResult.OK)
             {                
                 mgr.SettingsData.miktexPath = dialog.MiktexPath;
-                //mgr.SettingsData.gsPath = dialog.GSPath;
                 mgr.saveSettings();
             }
         }
