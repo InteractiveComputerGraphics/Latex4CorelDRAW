@@ -12,7 +12,11 @@ The included project file was made with Visual Studio 2015. You have to adapt th
 
 ## Installation
 
-Download latest release and extract the zip file into the folder C:\Program Files\Corel\CorelDRAW Graphics Suite X8\Programs64\Addons to install the addon.
+1. Download the latest release and extract the zip into C:\Program Files\Corel\CorelDRAW Graphics Suite X8\Programs64\Addons to install the addon.
+2. Right-click and open "Properties" for each DLL file in the folder. If you see the following text, you have to unblock the file:
+"Security: This file came from another computer and might be blocked to help protect this computer."
+3. Activate docker window "Latex" in the menu "Windows".
+4. If you have a better solution for step 2, write me an email ;-)
 
 ## Screenshots
 
