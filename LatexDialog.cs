@@ -231,13 +231,13 @@ namespace Latex4CorelDraw
             // Run once with preview to get depth value
             m_finishedSuccessfully = true;
             if (!createShape)
-                m_finishedSuccessfully = AddinUtilities.createLatexPng(m_latexEquation, true, true);            
+                m_finishedSuccessfully = AddinUtilities.createLatexPng(m_latexEquation, true);            
 
             if (m_finishedSuccessfully)
             {
                 // Run once without to get correct tight image
                 if (!createShape)
-                    m_finishedSuccessfully = AddinUtilities.createLatexPng(m_latexEquation, false, false);
+                    m_finishedSuccessfully = AddinUtilities.createLatexPng(m_latexEquation, false);
                 else
                 {
                     m_finishedSuccessfully = AddinUtilities.createLatexPs(m_latexEquation);

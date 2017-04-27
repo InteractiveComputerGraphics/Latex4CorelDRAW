@@ -49,7 +49,7 @@ namespace Latex4CorelDraw
 
     public class LatexFileGenerator
     {
-        public static void writeTexFile(string fileName, LatexEquation equation, bool usePreview)
+        public static void writeTexFile(string fileName, LatexEquation equation)
         {
             string templateText = "";
             string templateFileName = AddinUtilities.getAppDataLocation() + "\\LatexTemplate.txt";
@@ -79,8 +79,6 @@ namespace Latex4CorelDraw
             }
 
             string content = "";
-            if (usePreview)
-                content += "\\begin{preview}\n";
             content += "\\definecolor{txtcolor}{rgb}{" + equation.m_color + "}\n"; ;
             content += "\\color{txtcolor}\n";
             content += "\\changefont{" + equation.m_font.latexFontName + "}{" +
@@ -89,8 +87,6 @@ namespace Latex4CorelDraw
                                          equation.m_fontSize.ToString() + "}{" +
                                          ((equation.m_fontSize * 1.2)).ToString(System.Globalization.CultureInfo.InvariantCulture) + "}\n";
             content += equation.m_code;
-            if (usePreview)
-                content += "\n\\end{preview}\n";
 
             templateText = templateText.Replace("${Content}", content);
 
