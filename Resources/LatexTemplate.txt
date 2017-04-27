@@ -4,6 +4,7 @@
 \usepackage{bbm} 
 \usepackage{ae,aecompl} 
 \usepackage{color}
+\usepackage[active,displaymath,textmath,tightpage]{preview}
 \newcommand{\changefont}[5]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \fontsize{#4}{#5}\selectfont}
 \setlength{\parindent}{0pt}
 \begin{document} 

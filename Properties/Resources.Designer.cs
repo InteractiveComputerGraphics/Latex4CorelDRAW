@@ -85,40 +85,11 @@ namespace Latex4CorelDraw.Properties {
         ///   Sucht eine lokalisierte Zeichenfolge, die \documentclass[12pt,a4paper,ngerman]{article}
         ///\usepackage{amsmath} 
         ///\usepackage[utf8]{inputenc} 
-        ///\usepackage{ngerman} 
         ///\usepackage{bbm} 
         ///\usepackage{ae,aecompl} 
         ///\usepackage{color}
         ///\usepackage[active,displaymath,textmath,tightpage]{preview}
-        ///%\usepackage{helvet} 
-        ///%\renewcommand\familydefault{phv} 
-        ///\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
-        ///\setlength{\parindent}{0pt}
-        ///\begin{document} 
-        ///\thispagestyle{empty}
-        ///
-        ///${Content}
-        ///
-        ///\end{document}
-        /// ähnelt.
-        /// </summary>
-        internal static string LatexInlineTemplate {
-            get {
-                return ResourceManager.GetString("LatexInlineTemplate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die \documentclass[12pt,a4paper,ngerman]{article}
-        ///\usepackage{amsmath} 
-        ///\usepackage[utf8]{inputenc} 
-        ///\usepackage{ngerman} 
-        ///\usepackage{bbm} 
-        ///\usepackage{ae,aecompl} 
-        ///\usepackage{color}
-        ///%\usepackage{helvet} 
-        ///%\renewcommand\familydefault{phv} 
-        ///\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+        ///\newcommand{\changefont}[5]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \fontsize{#4}{#5}\selectfont}
         ///\setlength{\parindent}{0pt}
         ///\begin{document} 
         ///\thispagestyle{empty}
