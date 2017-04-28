@@ -1,5 +1,7 @@
-\documentclass[12pt,a4paper,ngerman]{article}
+\documentclass[12pt,a4paper]{article}
 \usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage[utf8]{inputenc} 
 \usepackage{bbm} 
 \usepackage{ae,aecompl} 

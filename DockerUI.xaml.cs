@@ -38,7 +38,6 @@ namespace Latex4CorelDraw
 
             AddinUtilities.initFonts();
             AddinUtilities.copyLatexTemplate("LatexTemplate.txt", Properties.Resources.LatexTemplate);
-            AddinUtilities.copyLatexTemplate("LatexInlineTemplate.txt", Properties.Resources.LatexInlineTemplate);
 
             m_dialog = new LatexDialog();
             SettingsManager mgr = SettingsManager.getCurrent();

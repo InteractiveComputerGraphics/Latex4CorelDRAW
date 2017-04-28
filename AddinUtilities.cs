@@ -373,14 +373,14 @@ namespace Latex4CorelDraw
             return true;
         }
 
-        public static bool createLatexPng(LatexEquation equation, bool usePreview, bool firstRun)
+        public static bool createLatexPng(LatexEquation equation, bool firstRun)
         {
             // Check paths
             SettingsManager mgr = SettingsManager.getCurrent();            
 
             string appPath = AddinUtilities.getAppDataLocation();
             Directory.SetCurrentDirectory(appPath);
-            LatexFileGenerator.writeTexFile(appPath + "\\teximport.tex", equation, usePreview);
+            LatexFileGenerator.writeTexFile(appPath + "\\teximport.tex", equation);
             if (!executeMikTex())
                 return false;
             if (!executeDviPng(equation, firstRun))
@@ -396,7 +396,7 @@ namespace Latex4CorelDraw
 
             string appPath = AddinUtilities.getAppDataLocation();
             Directory.SetCurrentDirectory(appPath);
-            LatexFileGenerator.writeTexFile(appPath + "\\teximport.tex", equation, false);
+            LatexFileGenerator.writeTexFile(appPath + "\\teximport.tex", equation);
             if (!executeMikTex())
                 return false;
             if (!executeDviPs(equation))
