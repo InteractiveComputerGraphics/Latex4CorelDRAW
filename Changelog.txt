@@ -1,3 +1,6 @@
+1.0.1
+	- Convert text to curves before import
+
 1.0
 
 	- Initial release
