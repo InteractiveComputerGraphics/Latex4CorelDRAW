@@ -348,6 +348,31 @@ namespace Latex4CorelDraw
             return true;
         }
 
+        public static bool executePs2Pdf(LatexEquation equation)
+        {
+            string appPath = AddinUtilities.getAppDataLocation();
+            Directory.SetCurrentDirectory(appPath);
+
+
+            SettingsManager mgr = SettingsManager.getCurrent();
+            try
+            {
+                File.Delete(appPath + "\\teximport.pdf");
+            }
+            catch
+            {
+                MessageBox.Show("teximport.pdf could not be written. Permission denied.");
+                return false;
+            }
+
+            string output = "";
+
+            // run ps2pdf
+            startProcess("cmd.exe", "/c \"" + mgr.SettingsData.miktexPath + "\\ps2pdf.exe\" -dNoOutputFonts teximport.ps teximport.pdf", true, false, out output);
+
+            return true;
+        }
+
         public static bool createLatexPng(LatexEquation equation, bool firstRun)
         {
             // Check paths
@@ -364,7 +389,7 @@ namespace Latex4CorelDraw
             return true;
         }
 
-        public static bool createLatexPs(LatexEquation equation)
+        public static bool createLatexPdf(LatexEquation equation)
         {
             // Check paths
             SettingsManager mgr = SettingsManager.getCurrent();
@@ -375,6 +400,8 @@ namespace Latex4CorelDraw
             if (!executeMikTex())
                 return false;
             if (!executeDviPs(equation))
+                return false;
+            if (!executePs2Pdf(equation))
                 return false;
 
             return true;
