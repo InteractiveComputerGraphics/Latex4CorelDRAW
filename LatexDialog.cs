@@ -40,6 +40,11 @@ namespace Latex4CorelDraw
             get { return comboBoxShape.Text; }
         }
 
+        public string MathFont
+        {
+            get { return comboBoxMathFont.Text; }
+        }
+
         public string LatexCode
         {
             get { return m_scintilla.Text; }
@@ -113,6 +118,7 @@ namespace Latex4CorelDraw
             comboBoxFont.Text = mgr.SettingsData.font;
             comboBoxSeries.Text = mgr.SettingsData.fontSeries;
             comboBoxShape.Text = mgr.SettingsData.fontShape;
+            comboBoxMathFont.Text = mgr.SettingsData.mathFont;
             buttonColor.BackColor = AddinUtilities.stringToColor(mgr.SettingsData.textColor);
             m_textColor = mgr.SettingsData.textColor;
             pictureBoxPreview.BackColor = Color.White;
@@ -131,6 +137,7 @@ namespace Latex4CorelDraw
                 comboBoxFont.Text = eq.m_font.fontName;
                 comboBoxSeries.Text = eq.m_fontSeries.fontSeries;
                 comboBoxShape.Text = eq.m_fontShape.fontShape;
+                comboBoxMathFont.Text = eq.m_mathFont.fontName;
 
                 try
                 {
@@ -166,6 +173,7 @@ namespace Latex4CorelDraw
             comboBoxFont.Items.AddRange(AddinUtilities.LatexFonts.ToArray());
             comboBoxSeries.Items.AddRange(AddinUtilities.LatexFontSeries.ToArray());
             comboBoxShape.Items.AddRange(AddinUtilities.LatexFontShapes.ToArray());
+            comboBoxMathFont.Items.AddRange(AddinUtilities.LatexMathFonts.ToArray());
         }
 
         void LatexDialog_FormClosing(object sender, FormClosingEventArgs e)
@@ -221,12 +229,14 @@ namespace Latex4CorelDraw
             mgr.SettingsData.font = comboBoxFont.Text;
             mgr.SettingsData.fontSeries = comboBoxSeries.Text;
             mgr.SettingsData.fontShape = comboBoxShape.Text;
+            mgr.SettingsData.mathFont = comboBoxMathFont.Text;
             mgr.SettingsData.textColor = m_textColor;
             mgr.saveSettings();
 
             m_latexEquation = new LatexEquation(m_scintilla.Text, size, m_textColor, (LatexFont)comboBoxFont.SelectedItem,
                                                       (LatexFontSeries)comboBoxSeries.SelectedItem,
-                                                      (LatexFontShape)comboBoxShape.SelectedItem);
+                                                      (LatexFontShape)comboBoxShape.SelectedItem,
+                                                      (LatexMathFont)comboBoxMathFont.SelectedItem);
 
             // Run once with preview to get depth value
             m_finishedSuccessfully = true;
@@ -348,7 +358,16 @@ namespace Latex4CorelDraw
             string templateFileName = AddinUtilities.getAppDataLocation() + "\\LatexTemplate.txt";
             System.Diagnostics.Process.Start(templateFileName);
         }
- 
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class LatexFont
@@ -396,6 +415,22 @@ namespace Latex4CorelDraw
         public override string ToString()
         {
             return fontShape;
+        }
+    }
+
+    public class LatexMathFont
+    {
+        public LatexMathFont(string fn, string lpn)
+        {
+            fontName = fn;
+            latexPackageName = lpn;
+        }
+        public string fontName;
+        public string latexPackageName;
+
+        public override string ToString()
+        {
+            return fontName;
         }
     }
 
