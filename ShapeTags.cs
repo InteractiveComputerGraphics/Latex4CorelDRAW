@@ -69,9 +69,14 @@ namespace Latex4CorelDraw
 
         public static LatexMathFont getLatexMathFont(Shape s)
         {
+            Version objVer = new Version(s.ObjectData["Latex4CorelDrawVersion"].Value.ToString());
+            if (objVer < new Version(1, 0, 2, 0))
+                return new LatexMathFont("Standard", "");
+
             string str = (string)s.ObjectData["LatexMathFont"].Value;
             if (str != null)
                 return AddinUtilities.getLatexMathFont(str);
+
             return null;
         }
 
