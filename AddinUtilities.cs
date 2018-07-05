@@ -64,6 +64,24 @@ namespace Latex4CorelDraw
                 m_latexFontShapes.Add(new LatexFontShape("Slanted", "sl"));
                 m_latexFontShapes.Add(new LatexFontShape("Small caps", "sc"));
             }
+            if (m_latexMathFonts == null)
+            {
+                m_latexMathFonts = new List<LatexMathFont>();
+                m_latexMathFonts.Add(new LatexMathFont("Standard", ""));
+                m_latexMathFonts.Add(new LatexMathFont("Palatino", "mathpazo"));
+                m_latexMathFonts.Add(new LatexMathFont("Sans Math", "sansmathfonts"));
+                m_latexMathFonts.Add(new LatexMathFont("CM Bright", "cmbright"));
+                m_latexMathFonts.Add(new LatexMathFont("Times", "mathptmx"));
+                m_latexMathFonts.Add(new LatexMathFont("Fourier", "fourier"));
+                m_latexMathFonts.Add(new LatexMathFont("Euler", "eulervm"));
+            }
+        }
+
+        private static List<LatexMathFont> m_latexMathFonts = null;
+        public static List<LatexMathFont> LatexMathFonts
+        {
+            get { return m_latexMathFonts; }
+            set { m_latexMathFonts = value; }
         }
 
         public static LatexFont getLatexFont(string name)
@@ -91,6 +109,16 @@ namespace Latex4CorelDraw
             foreach (LatexFontShape f in m_latexFontShapes)
             {
                 if (f.fontShape == name)
+                    return f;
+            }
+            return null;
+        }
+
+        public static LatexMathFont getLatexMathFont(string name)
+        {
+            foreach (LatexMathFont f in m_latexMathFonts)
+            {
+                if (f.fontName == name)
                     return f;
             }
             return null;

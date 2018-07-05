@@ -73,6 +73,7 @@ namespace Latex4CorelDraw
                 m_settings.font = "Times Roman";
                 m_settings.fontSeries = "Standard";
                 m_settings.fontShape = "Standard";
+                m_settings.mathFont = "Standard";
                 m_settings.insertAtCursor = true;
                 result = false;
             }
@@ -101,6 +102,7 @@ namespace Latex4CorelDraw
         public string font;
         public string fontSeries;
         public string fontShape;
+        public string mathFont;
         public bool insertAtCursor;
     }
 }

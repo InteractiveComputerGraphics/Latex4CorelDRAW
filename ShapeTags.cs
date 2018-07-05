@@ -25,6 +25,7 @@ namespace Latex4CorelDraw
             addTag(equation.m_shape, "LatexFont", equation.m_font.fontName);
             addTag(equation.m_shape, "LatexFontSeries", equation.m_fontSeries.fontSeries);
             addTag(equation.m_shape, "LatexFontShape", equation.m_fontShape.fontShape);
+            addTag(equation.m_shape, "LatexMathFont", equation.m_mathFont.fontName);
             addTag(equation.m_shape, "LatexTextShapeId", equation.m_textShapeId.ToString());
             addTag(equation.m_shape, "Latex4CorelDrawVersion", AddinUtilities.getVersionString());
         }
@@ -39,7 +40,8 @@ namespace Latex4CorelDraw
                         getLatexTextColor(s),
                         getLatexFont(s),
                         getLatexFontSeries(s),
-                        getLatexFontShape(s));
+                        getLatexFontShape(s),
+                        getLatexMathFont(s));
             }
             return null;
         }
@@ -62,6 +64,19 @@ namespace Latex4CorelDraw
             string str = (string)s.ObjectData["LatexFont"].Value;
             if (str != null)
                 return AddinUtilities.getLatexFont(str);
+            return null;
+        }
+
+        public static LatexMathFont getLatexMathFont(Shape s)
+        {
+            Version objVer = new Version(s.ObjectData["Latex4CorelDrawVersion"].Value.ToString());
+            if (objVer < new Version(1, 0, 2, 0))
+                return new LatexMathFont("Standard", "");
+
+            string str = (string)s.ObjectData["LatexMathFont"].Value;
+            if (str != null)
+                return AddinUtilities.getLatexMathFont(str);
+
             return null;
         }
 

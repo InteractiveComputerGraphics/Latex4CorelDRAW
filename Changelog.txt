@@ -1,3 +1,6 @@
+1.0.2
+    - Allow selection of math font through GUI
+
 1.0.1
 	- Convert text to curves before import
 
