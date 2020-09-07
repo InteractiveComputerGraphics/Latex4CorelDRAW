@@ -50,7 +50,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
-    <Reference Include="c:\program files\corel\coreldraw graphics suite x8\programs64\Assemblies\Corel.Interop.VGCore.dll">
+    <Reference Include="c:\program files\corel\coreldraw graphics suite 2020\programs64\Assemblies\Corel.Interop.VGCore.dll">
       <Name>Corel.Interop.VGCore</Name>
       <Private>False</Private>
     </Reference>
@@ -149,20 +149,20 @@
   -->
   <PropertyGroup>
     <PostBuildEvent>
-      if not exist "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" md "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)"
-      copy "$(TargetPath)" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)CorelDrw.addon" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)AppUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)UserUI.xslt" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\SciLexer.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\SciLexer64.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.dll" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.xml" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)" /y
-      if $(ConfigurationName) == Debug copy "$(TargetDir)\$(SolutionName).pdb" "c:\program files\corel\coreldraw graphics suite x8\programs64\addons\$(SolutionName)\$(SolutionName).pdb"
+      if not exist "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" md "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)"
+      copy "$(TargetPath)" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)CorelDrw.addon" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)AppUI.xslt" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)UserUI.xslt" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\SciLexer.dll" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\SciLexer64.dll" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.dll" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      copy "$(ProjectDir)\ScintillaNET\ScintillaNET.xml" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)" /y
+      if $(ConfigurationName) == Debug copy "$(TargetDir)\$(SolutionName).pdb" "c:\program files\corel\coreldraw graphics suite 2020\programs64\addons\$(SolutionName)\$(SolutionName).pdb"
 </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <StartAction>Program</StartAction>
-    <StartProgram>c:\program files\corel\coreldraw graphics suite x8\programs64\CorelDRW.exe</StartProgram>
+    <StartProgram>c:\program files\corel\coreldraw graphics suite 2020\programs64\CorelDRW.exe</StartProgram>
   </PropertyGroup>
 </Project>

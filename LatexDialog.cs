@@ -152,11 +152,15 @@ namespace Latex4CorelDraw
                 if (useTemplate)
                 {
                     int index = m_scintilla.Text.IndexOf("<Enter latex code>", 0);
+                    // DialogResult result = MessageBox.Show(string.Format(" index is {0} ", index), "Print Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     //m_scintilla.Select(index, 18);
                     m_scintilla.Selection.Start = index;
                     m_scintilla.Selection.End = index + 18;
                 }
-                m_scintilla.Selection.SelectAll();
+                else // NelisW put the selectall inside an else clause
+                {
+                    m_scintilla.Selection.SelectAll();
+                }
             }
         }
 
