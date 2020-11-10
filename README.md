@@ -28,8 +28,8 @@ The build process was also successfully completed with Viusal Studio 2019 Commun
 
 ## Write Access to the Addons Folder
 
-The build procedure copies the files to the final addon foler destination.
-Some installations would not allow Visual Studio to write to this folder if the code is built with user privelages (writing requires admin rights).  The (not so nice way) around this is to create the `Latex4CorelDraw` folder in 
+The build procedure copies the files to the final addon folder destination.
+Some installations would not allow Visual Studio to write to this folder if the code is built with user privileges (writing requires admin rights).  The (not so nice way) around this is to create the `Latex4CorelDraw` folder in 
 `C:\Program Files\Corel\CorelDRAW Graphics Suite XXXX\Programs64\Addons\` and then to set the access rights to this folder such that users can have full rights access to the folder. With these rights, the VS build procedure can write to the folder.
 
 Alternatively build the addon and then manually copy the following files:
