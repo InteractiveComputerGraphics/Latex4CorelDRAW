@@ -30,9 +30,15 @@ Everything you need should be in the `Latex4CorelDrawFolder` folder, just copy t
 
 ## Installation
 
-1. Clone or Download this repository outside of your CorelDRaw installation folder, somewhere you can keep it or eventually delete it.
-1. Copy the `Latex4CorelDrawFolder` folder and all of its 11 files into the `C:\Program Files\Corel\CorelDRAW Graphics Suite 2020\Programs64\Addons` folder (or where ever it is installed on your PC). You may get a warning that you need administrator rights to do the copy, approve and continue with the copy.  
- After the copy the following files should be in the folder
+1. Clone or Download this repository outside of your CorelDRaw installation folder, somewhere you can keep it or eventually delete it. In this example it was `K:\WorkN\Latex4CorelDRAW` on my PC
+
+2. Locate where CorelDraw is installed on your PC. On my PC it is here `C:\Program Files\Corel\CorelDRAW Graphics Suite 2020`. In this folder there should be a subfolder `\Programs64\Addons`.  Inside the `Addons` folder create a new folder `Latex4CorelDraw`. The full path to this folder should be something like this
+`C:\Program Files\Corel\CorelDRAW Graphics Suite 2020Programs64\Addons\Latex4CorelDraw`. This is the folder where the addon files must be copied to.
+   
+1. Copy the 11 files in the download subfolder `K:\WorkN\Latex4CorelDRAW\Latex4CorelDrawFolder` into the `C:\Program Files\Corel\CorelDRAW Graphics Suite 2020\Programs64\Addons\Latex4CorelDraw` folder (or where ever it is installed on your PC). Note the small but important folder name change.   
+You may get a warning that you need administrator rights to do the copy, approve and continue with the copy.  
+
+1.  After the copy the following files should be in the `\Addons\Latex4CorelDraw`  folder:
  
         `AppUI.xslt`,
         `CorelDrw.addon`,
@@ -46,10 +52,14 @@ Everything you need should be in the `Latex4CorelDrawFolder` folder, just copy t
         `ScintillaNET.xml`,
         `UserUI.xslt`
 
-3. Right-click and open "Properties" for each copied DLL file in the `Latex4CorelDrawFolder` folder. If you see the following text, you have to unblock the file:
-**"Security: This file came from another computer and might be blocked to help protect this computer."**.  
-1. Activate docker window "Latex" in the menu "Windows".
-2. Ensure that your environment has a path to your local tex installation.  On my PC I added the MikTex path `C:\Users\%USER%\AppData\Local\Programs\MiKTeX\miktex\bin\x64\` to the environment.  Change this for your installation details, it will probably be different from mine.
+1. There should be one file with zero length `CorelDrw.addon`, which may not be present in this set of files (depending on how you got this).  If the file is not there make an empty file in the `\Addons\Latex4CorelDraw` folder, with the name `CorelDrw.addon`.
+
+2. Right-click and open "Properties" for each copied DLL file in the `Latex4CorelDraw` folder. If you see the following text, you have to unblock the file:
+**"Security: This file came from another computer and might be blocked to help protect this computer."**. 
+
+1. The addon needs to know where to look for the LaTeX compiler on your PC. Add a path to the environment pointing to the local LaTeX compiler.   For MikTex, the path on my PC is `C:\Users\%USER%\AppData\Local\Programs\MiKTeX\miktex\bin\x64\`.  Change this for your installation details, it will probably be different from mine.
+
+2. Start CorelDraw. In the CorelDraw menu `<Windows>` scroll down to and open `<Dockers>`. Search for the `LaTeX` entry (probably near the bottom end).
 
 
 
