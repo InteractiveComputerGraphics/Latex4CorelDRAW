@@ -82,7 +82,7 @@ namespace Latex4CorelDraw.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die \documentclass[12pt,a4paper,ngerman]{article}
+        ///   Sucht eine lokalisierte Zeichenfolge, die \documentclass[12pt,a4paper]{article}
         ///\usepackage{amsmath} 
         ///\usepackage[utf8]{inputenc} 
         ///\usepackage{bbm} 
