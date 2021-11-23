@@ -240,14 +240,14 @@ namespace Latex4CorelDraw
                     m_finishedSuccessfully = AddinUtilities.createLatexPng(m_latexEquation, false);
                 else
                 {
-                    m_finishedSuccessfully = AddinUtilities.createLatexPs(m_latexEquation);
+                    m_finishedSuccessfully = AddinUtilities.createLatexPdf(m_latexEquation);
 
                     if (m_finishedSuccessfully)
                     {
-                        string imageFile = Path.Combine(AddinUtilities.getAppDataLocation(), "teximport.ps");
+                        string imageFile = Path.Combine(AddinUtilities.getAppDataLocation(), "teximport.pdf");
                         Corel.Interop.VGCore.StructImportOptions impopt = new Corel.Interop.VGCore.StructImportOptions();
                         impopt.MaintainLayers = true;
-                        Corel.Interop.VGCore.ImportFilter impflt = DockerUI.Current.CorelApp.ActiveLayer.ImportEx(imageFile, Corel.Interop.VGCore.cdrFilter.cdrPSInterpreted, impopt);
+                        Corel.Interop.VGCore.ImportFilter impflt = DockerUI.Current.CorelApp.ActiveLayer.ImportEx(imageFile, Corel.Interop.VGCore.cdrFilter.cdrPDF, impopt);
                         impflt.Finish();
                         m_latexEquation.m_shape = DockerUI.Current.CorelApp.ActiveShape;
                         ShapeTags.setShapeTags(m_latexEquation);
